@@ -1,0 +1,39 @@
+package lqb_test;
+
+import java.util.Scanner;
+
+public class TR_racing {
+public static void main(String[] args) {
+	int v1,v2,t,s,l;
+	Scanner sc=new Scanner(System.in);
+	v1=sc.nextInt();
+	v2=sc.nextInt();
+	t=sc.nextInt();
+	s=sc.nextInt();
+	l=sc.nextInt();
+	sc.close();
+	int l1=0;
+	int l2=0;
+	int t1=0;
+	int t2=0;
+	while(l1!=l&&l2!=l) {
+		if((l1-l2)>=t) {
+			t2 +=s;       //理解成兔子也一直在跑，只是兔子领先t米后，乌龟多了瞬移（s*v2）米
+			l2=v2*t2;
+		}
+		else {
+			t1++;
+			t2++;
+			l1=v1*t1;
+			l2=v2*t2;
+		}
+	}
+	if(l1==l2) {
+		System.out.print("D"+" "+t2);
+	}else if(l1>l2) {
+		System.out.print("R"+" "+t2);
+	}else {
+		System.out.print("T"+" "+l/v2);
+	}
+}
+}
